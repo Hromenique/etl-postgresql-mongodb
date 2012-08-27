@@ -1,38 +1,49 @@
 package br.java.hromenique.extracao.vo;
 
-/*
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+/**@author Hromenique Cezniowscki Leite Batista
+ * 
  * Esta classe representa uma instância da tabela (entidade) 'orientacoes'
  * CREATE TABLE orientacoes (
-    id integer NOT NULL,
-    titulo character varying(1024),
-    ano integer,
-    financiador character varying(1024),
-    lattesid character(16),
-    nome character varying(512),
-    orientadorlattesid character(16),
-    orientadornome character varying(512),
-    local character varying(1024),
-    nivel character varying(128),
-    tipo integer,
-    ehcoorientador character(1)
-);
+ *     id integer NOT NULL,
+ *     titulo character varying(1024),
+ *     ano integer,
+ *     financiador character varying(1024),
+ *     lattesid character(16),
+ *     nome character varying(512),
+ *     orientadorlattesid character(16),
+ *     orientadornome character varying(512),
+ *     local character varying(1024),
+ *     nivel character varying(128), 
+ *     tipo integer,
+ *     ehcoorientador character(1)
+ *     );
  */
-public class Orientacao {
-	
+@Entity
+@Table(name = "orientacoes")
+public class OrientacaoVO {
+	@Id
 	private int id;
 	private String titulo;
 	private int ano;
 	private String financiador;
 	private String lattesId;
-	private String nome;
-	private String orientadorLattesId;
+	private String nome;	
 	private String orientadorNome;
 	private String local;
 	private String nivel;
 	private int tipo;
 	private char ehCoorientador;
+	@ManyToOne
+	@JoinColumn(name = "orientadorLattesId")
+	private CurriculoVO curriculo;
 	
-	public Orientacao(){
+	public OrientacaoVO(){
 		
 	}
 
@@ -67,30 +78,14 @@ public class Orientacao {
 	public void setFinanciador(String financiador) {
 		this.financiador = financiador;
 	}
-
-	public String getLattesId() {
-		return lattesId;
-	}
-
-	public void setLattesId(String lattesId) {
-		this.lattesId = lattesId;
-	}
-
+	
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getOrientadorLattesId() {
-		return orientadorLattesId;
-	}
-
-	public void setOrientadorLattesId(String orientadorLattesId) {
-		this.orientadorLattesId = orientadorLattesId;
-	}
+	}	
 
 	public String getOrientadorNome() {
 		return orientadorNome;
@@ -130,5 +125,13 @@ public class Orientacao {
 
 	public void setEhCoorientador(char ehCoorientador) {
 		this.ehCoorientador = ehCoorientador;
+	}
+
+	public CurriculoVO getCurriculo() {
+		return curriculo;
+	}
+
+	public void setCurriculo(CurriculoVO curriculo) {
+		this.curriculo = curriculo;
 	}
 }

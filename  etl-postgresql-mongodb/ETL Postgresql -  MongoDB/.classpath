@@ -2,5 +2,24 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/hibernate-testing.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/infinispan-core-4.2.1.CR1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/jbosscache-core-3.2.1.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/oscache-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/proxool-0.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/swarmcache-1.0RC2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Banco de dados/Postgresql/postgresql-9.0-801.jdbc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
