@@ -1,22 +1,33 @@
 package br.java.hromenique.extracao.vo;
 
-/*
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
+/**@author Hromenique Cezniowscki Leite Batista<br/>
  * Esta classe representa uma instância da tabela (entidade) 'autorespublicacoes'
  * CREATE TABLE autorespublicacoes (
-    contador integer NOT NULL,
-    publicacaoid integer NOT NULL,
-    autorlattesid character(16),
-    autornome character varying(512) NOT NULL
-);
+ * contador integer NOT NULL,
+ * publicacaoid integer NOT NULL,
+ * autorlattesid character(16),
+ * autornome character varying(512) NOT NULL
+ *);
  */
-public class AutorPublicacao {
+
+@Entity
+@Table(name = "autoresPublicacoes")
+@IdClass(value = AutorPublicacaoPK.class)
+public class AutorPublicacaoVO {
 	
+	@Id
 	private int contador;
+	@Id
 	private int publicacaoId;
 	private String autorLattesId;
 	private String autorNome;
 	
-	public AutorPublicacao(){
+	public AutorPublicacaoVO(){
 		
 	}
 

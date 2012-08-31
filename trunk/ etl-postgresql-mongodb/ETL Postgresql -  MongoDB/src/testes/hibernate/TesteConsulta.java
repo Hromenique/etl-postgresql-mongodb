@@ -7,8 +7,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import br.java.hromenique.extracao.vo.AreaAtuacaoVO;
+import br.java.hromenique.extracao.vo.AutorPublicacaoPK;
+import br.java.hromenique.extracao.vo.AutorPublicacaoVO;
+import br.java.hromenique.extracao.vo.ContadorIdPK;
 import br.java.hromenique.extracao.vo.CurriculoVO;
-import br.java.hromenique.extracao.vo.FormacaoPK;
 import br.java.hromenique.extracao.vo.FormacaoVO;
 import br.java.hromenique.extracao.vo.OrientacaoVO;
 
@@ -18,20 +21,23 @@ public class TesteConsulta {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("curriculo_lattes_2");
 		EntityManager entityManager = factory.createEntityManager();		
 	
-		CurriculoVO c = entityManager.find(CurriculoVO.class, "6414738466336890");
-		System.out.println(c.getNome());
-		System.out.println(c.getLattesId());
-		System.out.println(c.getSexo());	
-		for(OrientacaoVO o:c.getOrientacoes()){
-			System.out.println(o.getOrientadorNome());
-		}
+		AutorPublicacaoPK chave = new AutorPublicacaoPK(1, 30);
+		AutorPublicacaoVO ap = entityManager.find(AutorPublicacaoVO.class, chave);
+		
+		System.out.println(ap.getAutorNome());
+		System.out.println(ap.getAutorLattesId());
 		
 		
-		System.out.println("--------------");
 		
-		OrientacaoVO o = entityManager.find(OrientacaoVO.class, 1);
-		System.out.println(o.getOrientadorNome());
-		System.out.println(o.getCurriculo().getLattesId());
+		
+		
+		
+		//CurriculoVO c = entityManager.find(CurriculoVO.class, "6414738466336890");
+		//ContadorIdPK chave = new ContadorIdPK(2, "6414738466336890");
+		//AreaAtuacaoVO areaAtuacaoVO = entityManager.find(AreaAtuacaoVO.class, chave);
+		//System.out.println(areaAtuacaoVO.getArea());
+		//System.out.println(areaAtuacaoVO.getEspecialidade());
+		//System.out.println(areaAtuacaoVO.getGrandeArea());
 		
 		
 		

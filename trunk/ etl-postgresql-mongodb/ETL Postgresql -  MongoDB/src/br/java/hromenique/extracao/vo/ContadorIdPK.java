@@ -1,49 +1,52 @@
 package br.java.hromenique.extracao.vo;
-import java.io.Serializable;
-/**
- * @author Hromenique Cezniowscki 
- * 
- * Objeto representando a primary key da tabela 'formacoes' *
- */
 
-public class FormacaoPK implements Serializable{	
+import java.io.Serializable;
+
+/**
+ * @author Hromenique Cezniowscki Leite Batista<br/>
+ * Esta classe representa uma chave composta genérica formada por um contador(int) e um id(String).
+ *
+ */
+public class ContadorIdPK implements Serializable{	
 	
-	private static final long serialVersionUID = 4528044681320258478L;
+	private static final long serialVersionUID = -3370686953071864269L;
+	private int contador;
+	private String lattesId;
 	
-	private int contador;	
-	private String lattesId;	
-	
-	public FormacaoPK(){
+	public ContadorIdPK(){
 		
 	}
 	
-	public FormacaoPK(int contador, String lattesId){
+	public ContadorIdPK(int contador, String id){
 		this.contador = contador;
-		this.lattesId = lattesId;
+		this.lattesId = id;
 	}
-	
+
 	public int getContador() {
 		return contador;
 	}
+
 	public void setContador(int contador) {
 		this.contador = contador;
 	}
-	public String getLattesId() {
+
+	public String getId() {
 		return lattesId;
 	}
-	public void setLattesId(String lattesId) {
-		this.lattesId = lattesId;
+
+	public void setId(String id) {
+		this.lattesId = id;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + contador;
-		result = prime * result
-				+ ((lattesId == null) ? 0 : lattesId.hashCode());
+		result = prime * result + ((lattesId == null) ? 0 : lattesId.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,7 +55,7 @@ public class FormacaoPK implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FormacaoPK other = (FormacaoPK) obj;
+		ContadorIdPK other = (ContadorIdPK) obj;
 		if (contador != other.contador)
 			return false;
 		if (lattesId == null) {
@@ -61,6 +64,8 @@ public class FormacaoPK implements Serializable{
 		} else if (!lattesId.equals(other.lattesId))
 			return false;
 		return true;
-	}	
+	}
+	
+	
 
 }
