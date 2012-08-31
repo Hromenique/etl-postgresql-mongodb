@@ -41,6 +41,10 @@ public class CurriculoVO implements Serializable{
 	@JoinColumn(name = "orientadorlattesId")
 	private List<OrientacaoVO> orientacoes;
 	
+	@OneToMany
+	@JoinColumn(name = "lattesid")
+	private List<AreaAtuacaoVO> areasAtuacao;
+	
 	public CurriculoVO(){
 		
 	}
@@ -99,6 +103,14 @@ public class CurriculoVO implements Serializable{
 
 	public void setOrientacoes(List<OrientacaoVO> orientacoes) {
 		this.orientacoes = orientacoes;
+	}
+
+	public List<AreaAtuacaoVO> getAreasAtuacao() {
+		return areasAtuacao;
+	}
+
+	public void setAreasAtuacao(List<AreaAtuacaoVO> areasAtuacao) {
+		this.areasAtuacao = areasAtuacao;
 	}
 
 	@Override

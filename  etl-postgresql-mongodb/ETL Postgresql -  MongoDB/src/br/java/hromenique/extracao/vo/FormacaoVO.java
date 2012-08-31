@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-/**@author Hromenique Cezniowscki Leite Batista
+/**@author Hromenique Cezniowscki Leite Batista<br/>
  * 
  *  Esta classe representa uma instância da tabela (entidade) 'formacoes'
  * CREATE TABLE formacoes (
@@ -23,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "formacoes")
-@IdClass(value=FormacaoPK.class)
+@IdClass(value=ContadorIdPK.class)
 public class FormacaoVO implements Serializable{	
 
 	private static final long serialVersionUID = -5803001298297036922L;
