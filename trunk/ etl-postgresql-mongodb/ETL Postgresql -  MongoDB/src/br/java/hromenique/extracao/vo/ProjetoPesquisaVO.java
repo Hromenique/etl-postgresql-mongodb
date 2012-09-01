@@ -1,28 +1,40 @@
 package br.java.hromenique.extracao.vo;
 
-/*
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+/**@author Hromenique Cezniowscki Leite Batista<br/>
  * Esta classe representa uma instância da tabela (entidade) 'projetosdepesquisa'
  * CREATE TABLE projetosdepesquisa (
-    contador integer NOT NULL,
-    lattesid character(16) NOT NULL,
-    periodo character varying(512),
-    inicio integer,
-    fim integer,
-    titulo character varying(2048),
-    valorfinanciado character varying(1024),
-    situacao character varying(1024),
-    natureza character varying(1024),
-    alunosenvolvidos text,
-    integrantes text,
-    coordenadores text,
-    financiadores text,
-    numerodeorientacoes integer,
-    numerodeproducoescta integer
-);
+ * contador integer NOT NULL,
+ * lattesid character(16) NOT NULL,
+ * periodo character varying(512),
+ * inicio integer,
+ * fim integer, 
+ * titulo character varying(2048),
+ * valorfinanciado character varying(1024),
+ * situacao character varying(1024),
+ * natureza character varying(1024),
+ * alunosenvolvidos text,
+ * integrantes text,
+ * coordenadores text,
+ * financiadores text,
+ * numerodeorientacoes integer,
+ * numerodeproducoescta integer
+ * );
  */
-public class ProjetoPesquisa {
-	
+@Entity
+@Table(name = "projetosdepesquisa")
+@IdClass(ContadorIdPK.class)
+public class ProjetoPesquisaVO {
+	@Id
 	private int contador;
+	@Id
 	private String lattesId;
 	private String periodo;
 	private int inicio;
@@ -37,7 +49,11 @@ public class ProjetoPesquisa {
 	private int numeroDeOrientacoes;
 	private int numeroDeProducoesCTA;
 	
-	public ProjetoPesquisa(){
+	@OneToOne
+	@JoinColumns(value = {@JoinColumn(name = "contador"), @JoinColumn(name = "lattesid")})
+	private ProjetoPesquisaDescricaoVO descricaoVO;
+	
+	public ProjetoPesquisaVO(){
 		
 	}
 
@@ -151,6 +167,14 @@ public class ProjetoPesquisa {
 
 	public void setNumeroDeProducoesCTA(int numeroDeProducoesCTA) {
 		this.numeroDeProducoesCTA = numeroDeProducoesCTA;
+	}
+
+	public ProjetoPesquisaDescricaoVO getDescricaoVO() {
+		return descricaoVO;
+	}
+
+	public void setDescricaoVO(ProjetoPesquisaDescricaoVO descricaoVO) {
+		this.descricaoVO = descricaoVO;
 	}	
 
 }
