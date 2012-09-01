@@ -10,7 +10,7 @@ package br.java.hromenique.extracao.vo;
     integrantenome character varying(512) NOT NULL
 );
  */
-public class IntegranteProjeto {
+public class IntegranteProjetoVO {
 	
 	private int contador;
 	private int contadorProjeto;
@@ -18,7 +18,7 @@ public class IntegranteProjeto {
 	private String integranteLattesId;
 	private String integranteNome;
 	
-	public IntegranteProjeto(){
+	public IntegranteProjetoVO(){
 		
 	}
 
