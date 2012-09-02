@@ -1,5 +1,7 @@
 package br.java.hromenique.extracao.vo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -18,8 +20,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "autoresPublicacoes")
 @IdClass(value = AutorPublicacaoPK.class)
-public class AutorPublicacaoVO {
+public class AutorPublicacaoVO implements Serializable{
 	
+	private static final long serialVersionUID = 2136462455755547793L;
 	@Id
 	private int contador;
 	@Id
@@ -61,5 +64,44 @@ public class AutorPublicacaoVO {
 
 	public void setAutorNome(String autorNome) {
 		this.autorNome = autorNome;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((autorLattesId == null) ? 0 : autorLattesId.hashCode());
+		result = prime * result
+				+ ((autorNome == null) ? 0 : autorNome.hashCode());
+		result = prime * result + contador;
+		result = prime * result + publicacaoId;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AutorPublicacaoVO other = (AutorPublicacaoVO) obj;
+		if (autorLattesId == null) {
+			if (other.autorLattesId != null)
+				return false;
+		} else if (!autorLattesId.equals(other.autorLattesId))
+			return false;
+		if (autorNome == null) {
+			if (other.autorNome != null)
+				return false;
+		} else if (!autorNome.equals(other.autorNome))
+			return false;
+		if (contador != other.contador)
+			return false;
+		if (publicacaoId != other.publicacaoId)
+			return false;
+		return true;
 	}
 }

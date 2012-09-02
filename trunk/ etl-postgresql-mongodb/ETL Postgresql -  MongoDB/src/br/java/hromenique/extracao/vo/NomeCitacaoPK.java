@@ -15,6 +15,10 @@ public class NomeCitacaoPK implements Serializable {
 	private String lattesId;
 	private  String nome;
 	
+	public NomeCitacaoPK(){
+		
+	}
+	
 	public NomeCitacaoPK(String id, String nome){
 		this.lattesId = id;
 		this.nome = nome;

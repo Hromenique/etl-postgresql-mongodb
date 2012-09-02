@@ -1,5 +1,7 @@
 package br.java.hromenique.extracao.vo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,8 +19,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "atuacoes")
 @IdClass(value = ContadorIdPK.class)
-public class AtuacaoVO{
+public class AtuacaoVO implements Serializable{
 	
+	private static final long serialVersionUID = 180403749000122461L;
 	@Id
 	@Column(name = "contadoratuacao")
 	private int contador;
@@ -52,6 +55,42 @@ public class AtuacaoVO{
 
 	public void setInstituicao(String instituicao) {
 		this.instituicao = instituicao;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + contador;
+		result = prime * result
+				+ ((instituicao == null) ? 0 : instituicao.hashCode());
+		result = prime * result
+				+ ((lattesId == null) ? 0 : lattesId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AtuacaoVO other = (AtuacaoVO) obj;
+		if (contador != other.contador)
+			return false;
+		if (instituicao == null) {
+			if (other.instituicao != null)
+				return false;
+		} else if (!instituicao.equals(other.instituicao))
+			return false;
+		if (lattesId == null) {
+			if (other.lattesId != null)
+				return false;
+		} else if (!lattesId.equals(other.lattesId))
+			return false;
+		return true;
 	}
 
 }
