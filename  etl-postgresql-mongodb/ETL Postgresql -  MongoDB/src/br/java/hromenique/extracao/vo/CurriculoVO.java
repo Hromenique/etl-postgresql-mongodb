@@ -2,8 +2,6 @@ package br.java.hromenique.extracao.vo;
 
 import java.io.Serializable;
 import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -26,8 +24,7 @@ import javax.persistence.Table;
 public class CurriculoVO implements Serializable{		
 	
 	private static final long serialVersionUID = 8311777714242955844L;
-	@Id
-	@Column(unique=true, name="lattesid")
+	@Id	
 	private  String lattesId;
 	private String nome;
 	private String bolsaProdutividade;

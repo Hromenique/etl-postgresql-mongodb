@@ -1,13 +1,22 @@
 package br.java.hromenique.extracao.vo;
-
 import java.io.Serializable;
 
+/**
+ * @author Hromenique Cezniowscki Leite Batista<br/>
+ * Esta classe representa uma chave primária composta por contador(int), contadorProjeto(int) e lattesId(String)
+ * e que será usada na classe IntegranteProjetoVO que guarda  as informações da tabela integrantesProjetos
+ *
+ */
 public class IntegranteProjetoPK implements Serializable{
 	
 	private static final long serialVersionUID = 6242887418697425979L;
 	private int contador;
 	private int contadorProjeto;
 	private String lattesId;
+	
+	public IntegranteProjetoPK(){
+		
+	}
 	
 	public IntegranteProjetoPK(int contador, int contadorProjeto, String lattesId){
 		this.contador = contador;
