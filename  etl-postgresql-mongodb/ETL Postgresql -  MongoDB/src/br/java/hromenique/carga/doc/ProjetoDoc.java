@@ -2,9 +2,15 @@ package br.java.hromenique.carga.doc;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
+
+@Entity(value = "projetos", noClassnameStored=true)
 public class ProjetoDoc {
 	
-	private int id;
+	@Id
+	private ObjectId id;
 	private String periodo;
 	private Integer inicio;
 	private Integer fim;
@@ -18,19 +24,23 @@ public class ProjetoDoc {
 	private List<String> lattesIdCoordenadores;
 	private List<String> financiadores;
 	private Integer numeroDeOrientacoes;
-	private Integer numeroDeProducoesCTA;
+	private Integer numeroDeProducoesCTA;	
 	
 	public ProjetoDoc(){
 		
-	}
+	}	
 
-	public int getId() {
+	public ObjectId getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
+
+
 
 	public String getPeriodo() {
 		return periodo;
@@ -155,7 +165,7 @@ public class ProjetoDoc {
 		result = prime * result + ((fim == null) ? 0 : fim.hashCode());
 		result = prime * result
 				+ ((financiadores == null) ? 0 : financiadores.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((inicio == null) ? 0 : inicio.hashCode());
 		result = prime
 				* result
@@ -213,7 +223,10 @@ public class ProjetoDoc {
 				return false;
 		} else if (!financiadores.equals(other.financiadores))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (inicio == null) {
 			if (other.inicio != null)
@@ -271,5 +284,5 @@ public class ProjetoDoc {
 		} else if (!titulo.equals(other.titulo))
 			return false;
 		return true;
-	}
+	}	
 }

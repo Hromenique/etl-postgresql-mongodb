@@ -1,8 +1,15 @@
 package br.java.hromenique.carga.doc;
 
+import org.bson.types.ObjectId;
+
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
+
+@Entity(value="formacoes", noClassnameStored=true)
 public class FormacaoDoc {
 	
-	private long id;
+	@Id
+	private ObjectId id;
 	private String lattesId;		
 	private String periodo;
 	private Integer inicio;
@@ -16,12 +23,17 @@ public class FormacaoDoc {
 		
 	}
 	
-	public long getId() {
+	
+	public ObjectId getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
+
+
 	public String getLattesId() {
 		return lattesId;
 	}
@@ -75,7 +87,7 @@ public class FormacaoDoc {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((fim == null) ? 0 : fim.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((inicio == null) ? 0 : inicio.hashCode());
 		result = prime * result
 				+ ((instituicao == null) ? 0 : instituicao.hashCode());
@@ -105,7 +117,10 @@ public class FormacaoDoc {
 				return false;
 		} else if (!fim.equals(other.fim))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (inicio == null) {
 			if (other.inicio != null)

@@ -1,7 +1,11 @@
 package br.java.hromenique.carga.doc;
 
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
+
+@Entity(value = "orientacoes", noClassnameStored = true)
 public class OrientacaoDoc {
-	
+	@Id
 	private int id;
 	private String titulo;
 	private Integer ano;
