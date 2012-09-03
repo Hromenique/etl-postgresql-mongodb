@@ -1,5 +1,8 @@
 package br.java.hromenique.carga.doc;
 
+import com.google.code.morphia.annotations.Embedded;
+
+@Embedded("areasDeAtuacao")
 public class AreaAtuacaoDoc {
 	
 	private String grandeArea;

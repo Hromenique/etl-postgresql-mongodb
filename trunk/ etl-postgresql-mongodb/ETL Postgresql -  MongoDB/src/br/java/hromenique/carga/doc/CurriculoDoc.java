@@ -2,18 +2,29 @@ package br.java.hromenique.carga.doc;
 
 import java.util.List;
 
+import com.google.code.morphia.annotations.Embedded;
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
+
+@Entity(value="curriculos", noClassnameStored=true)
 public class CurriculoDoc {
 	
-	private  String id;
+	@Id
+	private  String id;//lattesId do currículo
 	private String nome;
 	private String bolsaProdutividade;
 	private Integer ultimaAtualizacao;
-	private char sexo;
+	private Character sexo;
 	private List<String> nomesUsadosEmCitacoes;
+	@Embedded("areasDeAtuacao")
 	private List<AreaAtuacaoDoc> areasAtuacao;
 	private List<String> atuacoes;
 	private List<Integer> formacoes;
 	private List<Integer> orientacoes;	
+	
+	public CurriculoDoc(){
+		
+	}
 	
 	public String getId() {
 		return id;
