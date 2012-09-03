@@ -2,6 +2,8 @@ package br.java.hromenique.carga.doc;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
@@ -19,7 +21,7 @@ public class CurriculoDoc {
 	@Embedded("areasDeAtuacao")
 	private List<AreaAtuacaoDoc> areasAtuacao;
 	private List<String> atuacoes;
-	private List<Integer> formacoes;
+	private List<ObjectId> formacoes;
 	private List<Integer> orientacoes;	
 	
 	public CurriculoDoc(){
@@ -74,10 +76,10 @@ public class CurriculoDoc {
 	public void setAtuacoes(List<String> atuacoes) {
 		this.atuacoes = atuacoes;
 	}
-	public List<Integer> getFormacoes() {
+	public List<ObjectId> getFormacoes() {
 		return formacoes;
 	}
-	public void setFormacoes(List<Integer> formacoes) {
+	public void setFormacoes(List<ObjectId> formacoes) {
 		this.formacoes = formacoes;
 	}
 	public List<Integer> getOrientacoes() {
@@ -108,7 +110,7 @@ public class CurriculoDoc {
 						.hashCode());
 		result = prime * result
 				+ ((orientacoes == null) ? 0 : orientacoes.hashCode());
-		result = prime * result + sexo;
+		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		result = prime
 				* result
 				+ ((ultimaAtualizacao == null) ? 0 : ultimaAtualizacao
@@ -164,7 +166,10 @@ public class CurriculoDoc {
 				return false;
 		} else if (!orientacoes.equals(other.orientacoes))
 			return false;
-		if (sexo != other.sexo)
+		if (sexo == null) {
+			if (other.sexo != null)
+				return false;
+		} else if (!sexo.equals(other.sexo))
 			return false;
 		if (ultimaAtualizacao == null) {
 			if (other.ultimaAtualizacao != null)
