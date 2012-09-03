@@ -1,53 +1,21 @@
-package br.java.hromenique.extracao.vo;
+package br.java.hromenique.carga.doc;
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-/**@author Hromenique Cezniowscki Leite Batista
- * 
- * Esta classe representa uma instância da tabela (entidade) 'orientacoes'
- * CREATE TABLE orientacoes (
- *     id integer NOT NULL,
- *     titulo character varying(1024),
- *     ano integer,
- *     financiador character varying(1024),
- *     lattesid character(16),
- *     nome character varying(512),
- *     orientadorlattesid character(16),
- *     orientadornome character varying(512),
- *     local character varying(1024),
- *     nivel character varying(128), 
- *     tipo integer,
- *     ehcoorientador character(1)
- *     );
- */
-@Entity
-@Table(name = "orientacoes")
-public class OrientacaoVO implements Serializable{
+public class OrientacaoDoc {
 	
-	private static final long serialVersionUID = 5394124085102197085L;
-	@Id
 	private int id;
 	private String titulo;
-	private int ano;
-	private String financiador;
+	private Integer ano;
 	private String lattesId;
-	private String nome;	
+	private String nome;
 	private String orientadorNome;
+	private String orientadorLattesId;
+	private String financiador;		
 	private String local;
 	private String nivel;
-	private int tipo;
-	private char ehCoorientador;
-	@ManyToOne
-	@JoinColumn(name = "orientadorLattesId")
-	private CurriculoVO curriculo;
+	private Integer tipo;
+	private Character ehCoorientador;
 	
-	public OrientacaoVO(){
+	public OrientacaoDoc(){
 		
 	}
 
@@ -67,20 +35,12 @@ public class OrientacaoVO implements Serializable{
 		this.titulo = titulo;
 	}
 
-	public int getAno() {
+	public Integer getAno() {
 		return ano;
 	}
 
-	public void setAno(int ano) {
+	public void setAno(Integer ano) {
 		this.ano = ano;
-	}
-
-	public String getFinanciador() {
-		return financiador;
-	}
-
-	public void setFinanciador(String financiador) {
-		this.financiador = financiador;
 	}
 
 	public String getLattesId() {
@@ -107,6 +67,22 @@ public class OrientacaoVO implements Serializable{
 		this.orientadorNome = orientadorNome;
 	}
 
+	public String getOrientadorLattesId() {
+		return orientadorLattesId;
+	}
+
+	public void setOrientadorLattesId(String orientadorLattesId) {
+		this.orientadorLattesId = orientadorLattesId;
+	}
+
+	public String getFinanciador() {
+		return financiador;
+	}
+
+	public void setFinanciador(String financiador) {
+		this.financiador = financiador;
+	}
+
 	public String getLocal() {
 		return local;
 	}
@@ -123,38 +99,29 @@ public class OrientacaoVO implements Serializable{
 		this.nivel = nivel;
 	}
 
-	public int getTipo() {
+	public Integer getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 
-	public char getEhCoorientador() {
+	public Character getEhCoorientador() {
 		return ehCoorientador;
 	}
 
-	public void setEhCoorientador(char ehCoorientador) {
+	public void setEhCoorientador(Character ehCoorientador) {
 		this.ehCoorientador = ehCoorientador;
-	}
-
-	public CurriculoVO getCurriculo() {
-		return curriculo;
-	}
-
-	public void setCurriculo(CurriculoVO curriculo) {
-		this.curriculo = curriculo;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ano;
+		result = prime * result + ((ano == null) ? 0 : ano.hashCode());
 		result = prime * result
-				+ ((curriculo == null) ? 0 : curriculo.hashCode());
-		result = prime * result + ehCoorientador;
+				+ ((ehCoorientador == null) ? 0 : ehCoorientador.hashCode());
 		result = prime * result
 				+ ((financiador == null) ? 0 : financiador.hashCode());
 		result = prime * result + id;
@@ -163,9 +130,13 @@ public class OrientacaoVO implements Serializable{
 		result = prime * result + ((local == null) ? 0 : local.hashCode());
 		result = prime * result + ((nivel == null) ? 0 : nivel.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime
+				* result
+				+ ((orientadorLattesId == null) ? 0 : orientadorLattesId
+						.hashCode());
 		result = prime * result
 				+ ((orientadorNome == null) ? 0 : orientadorNome.hashCode());
-		result = prime * result + tipo;
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
@@ -178,15 +149,16 @@ public class OrientacaoVO implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrientacaoVO other = (OrientacaoVO) obj;
-		if (ano != other.ano)
-			return false;
-		if (curriculo == null) {
-			if (other.curriculo != null)
+		OrientacaoDoc other = (OrientacaoDoc) obj;
+		if (ano == null) {
+			if (other.ano != null)
 				return false;
-		} else if (!curriculo.equals(other.curriculo))
+		} else if (!ano.equals(other.ano))
 			return false;
-		if (ehCoorientador != other.ehCoorientador)
+		if (ehCoorientador == null) {
+			if (other.ehCoorientador != null)
+				return false;
+		} else if (!ehCoorientador.equals(other.ehCoorientador))
 			return false;
 		if (financiador == null) {
 			if (other.financiador != null)
@@ -215,12 +187,20 @@ public class OrientacaoVO implements Serializable{
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (orientadorLattesId == null) {
+			if (other.orientadorLattesId != null)
+				return false;
+		} else if (!orientadorLattesId.equals(other.orientadorLattesId))
+			return false;
 		if (orientadorNome == null) {
 			if (other.orientadorNome != null)
 				return false;
 		} else if (!orientadorNome.equals(other.orientadorNome))
 			return false;
-		if (tipo != other.tipo)
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
 			return false;
 		if (titulo == null) {
 			if (other.titulo != null)
@@ -228,5 +208,5 @@ public class OrientacaoVO implements Serializable{
 		} else if (!titulo.equals(other.titulo))
 			return false;
 		return true;
-	}	
+	}
 }

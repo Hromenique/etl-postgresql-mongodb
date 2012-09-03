@@ -21,5 +21,9 @@
 	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/slf4j-log4j12-1.6.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Organizar/lib hibernate configurada/swarmcache-1.0RC2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Banco de dados/Postgresql/postgresql-9.0-801.jdbc4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Banco de dados/Mongo/morphia e dependencias/morphia-0.99.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Banco de dados/Mongo/morphia e dependencias/morphia-logging-slf4j-0.99.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Banco de dados/Mongo/mongo-2.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Hromenique/Desktop/componentes de programação/Banco de dados/Mongo/morphia e dependencias/asm-3.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
