@@ -3,10 +3,10 @@ package br.java.hromenique.carga.doc;
 public class DadosPeriodicoDoc {
 	
 	private String nomePeriodico;
-	private Integer numero;
+	private String numero;
 	private String issn;
 	
-	public DadosPeriodicoDoc(String nomePeriodico, Integer numero, String issn) {
+	public DadosPeriodicoDoc(String nomePeriodico, String numero, String issn) {
 		super();
 		this.nomePeriodico = nomePeriodico;
 		this.numero = numero;
@@ -20,12 +20,13 @@ public class DadosPeriodicoDoc {
 	public void setNomePeriodico(String nomePeriodico) {
 		this.nomePeriodico = nomePeriodico;
 	}
+	
 
-	public Integer getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Integer numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
