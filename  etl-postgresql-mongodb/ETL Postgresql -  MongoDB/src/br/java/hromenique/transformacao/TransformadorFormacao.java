@@ -13,13 +13,18 @@ public class TransformadorFormacao implements TransformadorInterface<FormacaoVO,
 	public FormacaoDoc transforma(FormacaoVO entidade) {
 		FormacaoDoc documento = new FormacaoDoc();
 		documento.setId(new ObjectId());
+		documento.setLattesId(entidade.getLattesId());		
 		documento.setPeriodo(entidade.getPeriodo());
 		documento.setInicio(entidade.getInicio());
 		documento.setFim(entidade.getFim());
 		documento.setTitulo(entidade.getTitulo());
 		documento.setInstituicao(entidade.getInstituicao());		
 		documento.setOrientadorNome(ETLUtil.deStringVaziaParaNull(entidade.getOrientadorNome()));
-		documento.setOrientadorLattesId(ETLUtil.deStringVaziaParaNull(entidade.getOrientadorLattesId()));
+		
+		//lattesId do orientador
+		String orientadorLattesId = ETLUtil.seIgualTrocar(entidade.getOrientadorLattesId(), "', '            ", null);
+		orientadorLattesId = ETLUtil.deStringVaziaParaNull(orientadorLattesId);		
+		documento.setOrientadorLattesId(orientadorLattesId);
 		
 		return documento;
 	}

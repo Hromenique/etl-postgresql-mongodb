@@ -14,5 +14,12 @@ public class ETLUtil {
 		
 		return str;		
 	}
-
+	
+	public static String seIgualTrocar(String str, String verificacao, String troca){		
+		
+		if(!str.equals(verificacao)){
+			return str;
+		}		
+		return troca;	
+	}
 }
