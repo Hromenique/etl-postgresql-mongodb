@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "publicacoesConferencias")
-public class PublicacaoConferenciaVO implements Serializable{
+public class PublicacaoConferenciaVO implements Serializable, Tabela{
 	
 	private static final long serialVersionUID = -2433929316033048891L;
 	@Id

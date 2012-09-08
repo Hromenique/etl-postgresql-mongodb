@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "autoresPublicacoes")
 @IdClass(value = AutorPublicacaoPK.class)
-public class AutorPublicacaoVO implements Serializable{
+public class AutorPublicacaoVO implements Serializable, Tabela{
 	
 	private static final long serialVersionUID = 2136462455755547793L;
 	@Id

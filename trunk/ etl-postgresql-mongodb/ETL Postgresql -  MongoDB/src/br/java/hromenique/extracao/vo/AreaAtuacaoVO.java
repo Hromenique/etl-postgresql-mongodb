@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "AreasDeAtuacao")
 @IdClass(value = ContadorIdPK.class)
-public class AreaAtuacaoVO implements Serializable{	
+public class AreaAtuacaoVO implements Serializable, Tabela{	
 	
 	private static final long serialVersionUID = -6915820100558703373L;
 	@Id

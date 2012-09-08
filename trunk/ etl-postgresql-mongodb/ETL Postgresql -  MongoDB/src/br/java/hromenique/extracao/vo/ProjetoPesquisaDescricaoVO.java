@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "projetosdepesquisa_descricao")
 @IdClass(value = ContadorIdPK.class)
-public class ProjetoPesquisaDescricaoVO implements Serializable{
+public class ProjetoPesquisaDescricaoVO implements Serializable, Tabela{
 	
 	private static final long serialVersionUID = 758996204225863944L;
 	@Id

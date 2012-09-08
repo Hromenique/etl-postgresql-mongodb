@@ -9,7 +9,7 @@ import java.io.Serializable;
  * );
  */
 
-public class NomeVO implements Serializable{
+public class NomeVO implements Serializable, Tabela{
 	
 	private static final long serialVersionUID = -3778221281415098209L;
 	private String nomePadrao;

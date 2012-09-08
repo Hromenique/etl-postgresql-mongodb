@@ -5,6 +5,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import br.java.hromenique.carga.doc.FormacaoDoc;
 import br.java.hromenique.extracao.vo.FormacaoVO;
+import br.java.hromenique.utils.ETLUtil;
 
 public class TransformadorFormacao implements TransformadorInterface<FormacaoVO, FormacaoDoc> {
 	
@@ -16,9 +17,9 @@ public class TransformadorFormacao implements TransformadorInterface<FormacaoVO,
 		documento.setInicio(entidade.getInicio());
 		documento.setFim(entidade.getFim());
 		documento.setTitulo(entidade.getTitulo());
-		documento.setInstituicao(entidade.getInstituicao());
-		documento.setOrientadorNome(entidade.getOrientadorNome());
-		documento.setOrientadorLattesId(entidade.getLattesId());
+		documento.setInstituicao(entidade.getInstituicao());		
+		documento.setOrientadorNome(ETLUtil.deStringVaziaParaNull(entidade.getOrientadorNome()));
+		documento.setOrientadorLattesId(ETLUtil.deStringVaziaParaNull(entidade.getOrientadorLattesId()));
 		
 		return documento;
 	}

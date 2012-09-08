@@ -1,5 +1,7 @@
 package br.java.hromenique.extracao.vo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -19,7 +21,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "integrantesprojetos")
 @IdClass(value = IntegranteProjetoPK.class)
-public class IntegranteProjetoVO {
+public class IntegranteProjetoVO implements Serializable, Tabela {
+	
+	private static final long serialVersionUID = -7038645286768335903L;
 	@Id
 	private int contador;
 	@Id
@@ -71,5 +75,53 @@ public class IntegranteProjetoVO {
 
 	public void setIntegranteNome(String integranteNome) {
 		this.integranteNome = integranteNome;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + contador;
+		result = prime * result + contadorProjeto;
+		result = prime
+				* result
+				+ ((integranteLattesId == null) ? 0 : integranteLattesId
+						.hashCode());
+		result = prime * result
+				+ ((integranteNome == null) ? 0 : integranteNome.hashCode());
+		result = prime * result
+				+ ((lattesId == null) ? 0 : lattesId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		IntegranteProjetoVO other = (IntegranteProjetoVO) obj;
+		if (contador != other.contador)
+			return false;
+		if (contadorProjeto != other.contadorProjeto)
+			return false;
+		if (integranteLattesId == null) {
+			if (other.integranteLattesId != null)
+				return false;
+		} else if (!integranteLattesId.equals(other.integranteLattesId))
+			return false;
+		if (integranteNome == null) {
+			if (other.integranteNome != null)
+				return false;
+		} else if (!integranteNome.equals(other.integranteNome))
+			return false;
+		if (lattesId == null) {
+			if (other.lattesId != null)
+				return false;
+		} else if (!lattesId.equals(other.lattesId))
+			return false;
+		return true;
 	}	
 }
