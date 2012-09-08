@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "formacoes")
 @IdClass(value=ContadorIdPK.class)
-public class FormacaoVO implements Serializable{	
+public class FormacaoVO implements Serializable, Tabela{	
 
 	private static final long serialVersionUID = -5803001298297036922L;
 	@Id

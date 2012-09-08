@@ -21,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="curriculos")
-public class CurriculoVO implements Serializable{		
+public class CurriculoVO implements Serializable, Tabela{		
 	
 	private static final long serialVersionUID = 8311777714242955844L;
 	@Id	

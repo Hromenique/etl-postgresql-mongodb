@@ -2,12 +2,15 @@ package br.java.hromenique.carga.dao;
 
 import java.net.UnknownHostException;
 
+import br.java.hromenique.carga.doc.CurriculoDoc;
+import br.java.hromenique.carga.doc.Documento;
+
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
 import com.mongodb.Mongo;
 import com.mongodb.MongoException;
 
-public class GenericDocumentDAO<T> {
+public class GenericDocumentDAO<T extends Documento> {
 	
 	//representa um DAO (ou ligação) com o MongoDB
 	private Datastore datastore;
@@ -17,7 +20,7 @@ public class GenericDocumentDAO<T> {
 		Mongo mongo = new Mongo();
 		Morphia morphia = new Morphia();
 		this.datastore = morphia.createDatastore(mongo, database);
-		this.entityClass = entityClass;		
+		this.entityClass = entityClass;	
 	}
 	
 	public GenericDocumentDAO(String servidor, String database, Class<T> entityClass) throws UnknownHostException, MongoException{
@@ -37,12 +40,13 @@ public class GenericDocumentDAO<T> {
 	
 	public void salvar(T documento){
 		this.datastore.save(documento);
+	}	
+	
+	public T buscar(Object id){
+		return this.datastore.get(this.entityClass, id);
 	}
-	
-	
-	
-	
-	
-	
 
+	protected Datastore getDatastore() {
+		return datastore;
+	}	
 }

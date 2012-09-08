@@ -9,7 +9,7 @@ import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 
 @Entity(value="curriculos", noClassnameStored=true)
-public class CurriculoDoc {
+public class CurriculoDoc implements Documento{
 	
 	@Id
 	private  String id;//lattesId do currículo

@@ -6,7 +6,7 @@ import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
 @Entity(value = "publicacoes", noClassnameStored = true)
-public class PublicacaoDoc {
+public class PublicacaoDoc implements Documento {
 	@Id
 	private int id;
 	private String titulo;

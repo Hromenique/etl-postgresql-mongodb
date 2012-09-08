@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "coordenadoresprojetos")
 @IdClass(value=IntegranteProjetoPK.class)
-public class CoordenadorProjetoVO implements Serializable {
+public class CoordenadorProjetoVO implements Serializable, Tabela {
 	
 	private static final long serialVersionUID = -8119513460463369272L;
 	@Id

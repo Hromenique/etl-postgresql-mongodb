@@ -9,6 +9,7 @@ import br.java.hromenique.extracao.vo.AtuacaoVO;
 import br.java.hromenique.extracao.vo.CurriculoVO;
 import br.java.hromenique.extracao.vo.NomeCitacaoVO;
 import br.java.hromenique.extracao.vo.OrientacaoVO;
+import br.java.hromenique.utils.ETLUtil;
 
 public class TransformadorCurriculo implements TransformadorInterface<CurriculoVO, CurriculoDoc> {
 	
@@ -23,8 +24,9 @@ public class TransformadorCurriculo implements TransformadorInterface<CurriculoV
 		documento.setId(entidade.getLattesId());
 		documento.setNome(entidade.getNome());
 		documento.setUltimaAtualizacao(entidade.getUltimaAtualizacao());
-		documento.setSexo(entidade.getSexo());
-		documento.setBolsaProdutividade(entidade.getBolsaProdutividade());
+		documento.setSexo(entidade.getSexo());	
+		documento.setBolsaProdutividade(ETLUtil.deStringVaziaParaNull(entidade.getBolsaProdutividade()));
+	
 		
 		//nomesUsadosEmCitações
 		if (entidade.getNomesUsadosEmCitacoes() != null) {
@@ -81,9 +83,12 @@ public class TransformadorCurriculo implements TransformadorInterface<CurriculoV
 	}
 	
 	private AreaAtuacaoDoc converterAreaAtuacaoDeVOparaDOC(AreaAtuacaoVO vo){
-		AreaAtuacaoDoc documento = new AreaAtuacaoDoc(vo.getGrandeArea(), vo.getArea(), vo.getSubArea(), vo.getEspecialidade());
+		String grandeArea = ETLUtil.deStringVaziaParaNull(vo.getGrandeArea());
+		String area = ETLUtil.deStringVaziaParaNull(vo.getArea());
+		String subArea = ETLUtil.deStringVaziaParaNull(vo.getSubArea());
+		String especialidade = ETLUtil.deStringVaziaParaNull(vo.getEspecialidade());		
+		
+		AreaAtuacaoDoc documento = new AreaAtuacaoDoc(grandeArea, area, subArea, especialidade);
 		return documento;
 	}
-	
-
 }

@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "nomesusadosemcitacoes")
 @IdClass(value = NomeCitacaoPK.class)
-public class NomeCitacaoVO implements Serializable {
+public class NomeCitacaoVO implements Serializable, Tabela {
 	
 	private static final long serialVersionUID = 2864929343931910414L;
 	@Id

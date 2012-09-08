@@ -8,7 +8,11 @@ public class AreaAtuacaoDoc {
 	private String grandeArea;
 	private String area;
 	private String subArea;
-	private String especialidade;	
+	private String especialidade;
+	
+	public AreaAtuacaoDoc(){
+		
+	}
 
 	public AreaAtuacaoDoc(String grandeArea, String area, String subArea, String especialidade) {
 		super();

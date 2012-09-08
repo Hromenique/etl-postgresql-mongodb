@@ -6,7 +6,7 @@ import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 
 @Entity(value="formacoes", noClassnameStored=true)
-public class FormacaoDoc {
+public class FormacaoDoc implements Documento {
 	
 	@Id
 	private ObjectId id;
