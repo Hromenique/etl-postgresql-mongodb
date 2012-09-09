@@ -6,9 +6,13 @@ import com.google.code.morphia.annotations.Embedded;
 public class AlunosEnvolvidosProjetoDoc {
 	
 	private String tipo;
-	private Integer quantidade;
+	private String quantidade;
 	
-	public AlunosEnvolvidosProjetoDoc(String tipo, Integer quantidade) {
+	public AlunosEnvolvidosProjetoDoc(){
+		
+	}
+	
+	public AlunosEnvolvidosProjetoDoc(String tipo, String quantidade) {
 		super();
 		this.tipo = tipo;
 		this.quantidade = quantidade;
@@ -22,11 +26,11 @@ public class AlunosEnvolvidosProjetoDoc {
 		this.tipo = tipo;
 	}
 
-	public Integer getQuantidade() {
+	public String getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(Integer quantidade) {
+	public void setQuantidade(String quantidade) {
 		this.quantidade = quantidade;
 	}
 

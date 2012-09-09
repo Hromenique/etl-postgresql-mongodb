@@ -24,7 +24,8 @@ public class ProjetoDoc implements Documento {
 	private List<String> lattesIdIntegrantes;
 	private List<String> nomeCoordenadores;
 	private List<String> lattesIdCoordenadores;
-	private List<String> financiadores;
+	@Embedded
+	private List<FinanciadorDoc> financiadores;
 	private Integer numeroDeOrientacoes;
 	private Integer numeroDeProducoesCTA;		
 	
@@ -139,15 +140,7 @@ public class ProjetoDoc implements Documento {
 
 	public void setLattesIdCoordenadores(List<String> lattesIdCoordenadores) {
 		this.lattesIdCoordenadores = lattesIdCoordenadores;
-	}
-
-	public List<String> getFinanciadores() {
-		return financiadores;
-	}
-
-	public void setFinanciadores(List<String> financiadores) {
-		this.financiadores = financiadores;
-	}
+	}	
 
 	public Integer getNumeroDeOrientacoes() {
 		return numeroDeOrientacoes;
@@ -155,6 +148,14 @@ public class ProjetoDoc implements Documento {
 
 	public void setNumeroDeOrientacoes(Integer numeroDeOrientacoes) {
 		this.numeroDeOrientacoes = numeroDeOrientacoes;
+	}
+
+	public List<FinanciadorDoc> getFinanciadores() {
+		return financiadores;
+	}
+
+	public void setFinanciadores(List<FinanciadorDoc> financiadores) {
+		this.financiadores = financiadores;
 	}
 
 	public Integer getNumeroDeProducoesCTA() {
