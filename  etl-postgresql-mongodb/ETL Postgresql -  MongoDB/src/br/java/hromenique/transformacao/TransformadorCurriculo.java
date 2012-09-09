@@ -2,8 +2,13 @@ package br.java.hromenique.transformacao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.bson.types.ObjectId;
+
+import br.java.hromenique.carga.dao.FormacaoDocDAO;
 import br.java.hromenique.carga.doc.AreaAtuacaoDoc;
 import br.java.hromenique.carga.doc.CurriculoDoc;
+import br.java.hromenique.carga.doc.FormacaoDoc;
 import br.java.hromenique.extracao.vo.AreaAtuacaoVO;
 import br.java.hromenique.extracao.vo.AtuacaoVO;
 import br.java.hromenique.extracao.vo.CurriculoVO;
@@ -13,15 +18,30 @@ import br.java.hromenique.utils.ETLUtil;
 
 public class TransformadorCurriculo implements TransformadorInterface<CurriculoVO, CurriculoDoc> {
 	
+	private FormacaoDocDAO dao;
+	
 	public TransformadorCurriculo(){
 		
+	}
+	
+	public TransformadorCurriculo(FormacaoDocDAO dao){
+		this.dao = dao;
 	}
 	
 	
 	@Override
 	public CurriculoDoc transforma(CurriculoVO entidade) {
-		CurriculoDoc documento = new CurriculoDoc();
+		CurriculoDoc documento = new CurriculoDoc();		
 		documento.setId(entidade.getLattesId());
+		
+		//Formações referentes ao currículo
+		List<FormacaoDoc> formacoesDoc = dao.buscarPorLattesId(documento.getId());
+		List<ObjectId> idFormacoes = new ArrayList<ObjectId>();
+		for(FormacaoDoc aux : formacoesDoc){
+			idFormacoes.add(aux.getId());
+		}
+		documento.setFormacoes(idFormacoes);		
+		
 		documento.setNome(entidade.getNome());
 		documento.setUltimaAtualizacao(entidade.getUltimaAtualizacao());
 		documento.setSexo(entidade.getSexo());	
