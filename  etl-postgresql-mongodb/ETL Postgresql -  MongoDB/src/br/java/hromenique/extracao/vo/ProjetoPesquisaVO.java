@@ -66,12 +66,12 @@ public class ProjetoPesquisaVO implements Serializable, Tabela{
 	private CurriculoVO curriculo;	
 	
 	@OneToMany
-	@JoinColumns(value = { @JoinColumn(name = "contadorProjeto", referencedColumnName = "contador"),
+	@JoinColumns(value = { @JoinColumn(name = "contador", referencedColumnName = "contador"),
 			@JoinColumn(name = "lattesId", referencedColumnName = "lattesId") })
 	private List<IntegranteProjetoVO> curriculosIntegrantes;
 	
 	@OneToMany
-	@JoinColumns(value = { @JoinColumn(name = "contadorProjeto", referencedColumnName = "contador"), 
+	@JoinColumns(value = { @JoinColumn(name = "contador", referencedColumnName = "contador"), 
 			@JoinColumn(name = "lattesId", referencedColumnName = "lattesId") })
 	private List<CoordenadorProjetoVO> curriculosCoordenadores;
 	
