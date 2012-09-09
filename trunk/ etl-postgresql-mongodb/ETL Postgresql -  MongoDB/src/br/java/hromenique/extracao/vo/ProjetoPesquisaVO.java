@@ -108,19 +108,19 @@ public class ProjetoPesquisaVO implements Serializable, Tabela{
 		this.periodo = periodo;
 	}
 
-	public int getInicio() {
+	public Integer getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(int inicio) {
+	public void setInicio(Integer inicio) {
 		this.inicio = inicio;
 	}
 
-	public int getFim() {
+	public Integer getFim() {
 		return fim;
 	}
 
-	public void setFim(int fim) {
+	public void setFim(Integer fim) {
 		this.fim = fim;
 	}
 

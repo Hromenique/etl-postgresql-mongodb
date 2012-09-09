@@ -10,10 +10,9 @@ import br.java.hromenique.carga.doc.AlunosEnvolvidosProjetoDoc;
 import br.java.hromenique.carga.doc.FinanciadorDoc;
 import br.java.hromenique.carga.doc.ProjetoDoc;
 import br.java.hromenique.extracao.vo.CoordenadorProjetoVO;
-import br.java.hromenique.extracao.vo.CurriculoVO;
 import br.java.hromenique.extracao.vo.IntegranteProjetoVO;
 import br.java.hromenique.extracao.vo.ProjetoPesquisaVO;
-import br.java.hromenique.utils.ETLUtil;
+
 
 public class TransformadorProjeto implements TransformadorInterface<ProjetoPesquisaVO, ProjetoDoc> {
 	
@@ -30,6 +29,7 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 		documento.setInicio(entidade.getInicio());
 		documento.setFim(entidade.getFim());
 		documento.setTitulo(entidade.getTitulo());
+		documento.setDescricao(entidade.getDescricao().getDescricao());
 		documento.setSituacao(entidade.getSituacao());
 		documento.setNatureza(entidade.getNatureza());
 		documento.setAlunosEnvolvidos(gerarAlunosEnvolvidos(entidade.getAlunosEnvolvidos()));
@@ -40,7 +40,9 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 			List<String> lattesIdIntegrantes = new ArrayList<String>();
 			
 			for(IntegranteProjetoVO vo : entidade.getCurriculosIntegrantes()){				
-				lattesIdIntegrantes.add(vo.getIntegranteLattesId());				
+				if(vo.getIntegranteLattesId() != null){
+					lattesIdIntegrantes.add(vo.getIntegranteLattesId());
+				}
 			}
 			
 			documento.setLattesIdIntegrantes(lattesIdIntegrantes);			
@@ -53,10 +55,12 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 			List<String> lattesIdIntegrantes = new ArrayList<String>();
 
 			for (CoordenadorProjetoVO vo : entidade.getCurriculosCoordenadores()) {
-				lattesIdIntegrantes.add(vo.getIntegrantelattesId());
+				if(vo.getIntegrantelattesId()!= null){
+					lattesIdIntegrantes.add(vo.getIntegrantelattesId());
+				}
 			}
 
-			documento.setLattesIdIntegrantes(lattesIdIntegrantes);
+			documento.setLattesIdCoordenadores(lattesIdIntegrantes);
 		}
 		
 		documento.setFinanciadores(gerarFinanciadores(entidade.getFinanciadores()));
@@ -84,7 +88,7 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 			return null;
 		}
 		
-		if(ETLUtil.seIgualTrocar(alunosEnvolvidos, "''", null) == null){
+		if(alunosEnvolvidos.endsWith("''") || alunosEnvolvidos.equals("")){ 
 			return null;
 		}		
 		
@@ -93,18 +97,14 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 		//Dividir string em listas de 'tipo (quantidade)'
 		String[] listaStr = alunosEnvolvidos.split("/");
 		
-		for (String aux : listaStr) {
+		for (String aux : listaStr) {			
+			String[] strs = aux.split("\\(");			
 			// Extração da quantidade
-			String quantidade = aux.split("(")[1];
-			quantidade = quantidade.replaceAll(")", "").replace(" ", "");
-
+			String quantidade = strs[1].replaceAll("\\)", "").replace(" ", "");
 			// Extração do tipo
-			String tipo = aux.split("(")[0];
-			tipo = tipo.replace(" ", "");
-
+			String tipo = strs[0].trim();
 			alunosEnvolvidosProjeto.add(new AlunosEnvolvidosProjetoDoc(tipo, quantidade));
-		}
-		
+		}		
 		return alunosEnvolvidosProjeto;
 	}
 	
@@ -117,14 +117,14 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 	
 	
 	//"Conselho Nacional de Desenvolvimento Científico e Tecnológico - Bolsa / Conselho Nacional de Desenvolvimento Científico e Tecnológico - Auxílio financeiro"
-	private List<FinanciadorDoc> gerarFinanciadores(String strFinanciadores){
+	public List<FinanciadorDoc> gerarFinanciadores(String strFinanciadores){
 		List<FinanciadorDoc> financiadores = new ArrayList<FinanciadorDoc>();
 		
 		if(strFinanciadores == null){
 			return null;
 		}
 		
-		if(strFinanciadores.equals("''")){
+		if(strFinanciadores.equals("''") || strFinanciadores.equals("")){
 			return null;
 		}		
 		
