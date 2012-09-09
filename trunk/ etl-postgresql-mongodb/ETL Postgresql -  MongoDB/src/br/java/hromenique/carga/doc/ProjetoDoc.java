@@ -1,22 +1,24 @@
 package br.java.hromenique.carga.doc;
 
 import java.util.List;
-
 import org.bson.types.ObjectId;
+import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 
 @Entity(value = "projetos", noClassnameStored=true)
-public class ProjetoDoc {
+public class ProjetoDoc implements Documento {
 	
 	@Id
 	private ObjectId id;
+	private String lattesId;
 	private String periodo;
 	private Integer inicio;
 	private Integer fim;
 	private String titulo;
 	private String situacao;
 	private String natureza;
+	@Embedded
 	private List<AlunosEnvolvidosProjetoDoc> alunosEnvolvidos;
 	private List<String> nomesIntegrantes;
 	private List<String> lattesIdIntegrantes;
@@ -24,7 +26,7 @@ public class ProjetoDoc {
 	private List<String> lattesIdCoordenadores;
 	private List<String> financiadores;
 	private Integer numeroDeOrientacoes;
-	private Integer numeroDeProducoesCTA;	
+	private Integer numeroDeProducoesCTA;		
 	
 	public ProjetoDoc(){
 		
@@ -41,6 +43,14 @@ public class ProjetoDoc {
 	}
 
 
+
+	public String getLattesId() {
+		return lattesId;
+	}
+
+	public void setLattesId(String lattesId) {
+		this.lattesId = lattesId;
+	}
 
 	public String getPeriodo() {
 		return periodo;
@@ -167,6 +177,8 @@ public class ProjetoDoc {
 				+ ((financiadores == null) ? 0 : financiadores.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((inicio == null) ? 0 : inicio.hashCode());
+		result = prime * result
+				+ ((lattesId == null) ? 0 : lattesId.hashCode());
 		result = prime
 				* result
 				+ ((lattesIdCoordenadores == null) ? 0 : lattesIdCoordenadores
@@ -232,6 +244,11 @@ public class ProjetoDoc {
 			if (other.inicio != null)
 				return false;
 		} else if (!inicio.equals(other.inicio))
+			return false;
+		if (lattesId == null) {
+			if (other.lattesId != null)
+				return false;
+		} else if (!lattesId.equals(other.lattesId))
 			return false;
 		if (lattesIdCoordenadores == null) {
 			if (other.lattesIdCoordenadores != null)
