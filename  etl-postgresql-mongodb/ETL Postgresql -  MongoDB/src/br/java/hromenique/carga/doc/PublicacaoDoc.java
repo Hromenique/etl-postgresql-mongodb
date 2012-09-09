@@ -1,10 +1,10 @@
 package br.java.hromenique.carga.doc;
 
 import java.util.List;
-
+import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
-import com.google.code.morphia.annotations.Property;
+
 @Entity(value = "publicacoes", noClassnameStored = true)
 public class PublicacaoDoc implements Documento {
 	@Id
@@ -19,9 +19,9 @@ public class PublicacaoDoc implements Documento {
 	private Integer idUnico;
 	private List<String> autoresNomes;
 	private List<String> autoresLattesId;
-	@Property("periodico")
+	@Embedded("periodico")
 	private DadosPeriodicoDoc dadosPeriodico;
-	@Property("conferencia")
+	@Embedded("conferencia")
 	private DadosConferenciaDoc dadosConferencia;
 	
 	public PublicacaoDoc(){

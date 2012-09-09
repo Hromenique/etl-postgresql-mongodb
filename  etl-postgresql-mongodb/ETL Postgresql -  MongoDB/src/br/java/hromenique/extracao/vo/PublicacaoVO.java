@@ -51,11 +51,11 @@ public class PublicacaoVO implements Serializable, Tabela{
 	private List<AutorPublicacaoVO> autoresPublicacao;
 	
 	@OneToOne
-	@JoinColumn(name = "publicacaoId")
+	@JoinColumn(name = "id")
 	private PublicacaoConferenciaVO conferencia;
 	
 	@OneToOne
-	@JoinColumn(name = "publicaoId")
+	@JoinColumn(name = "id")
 	private PublicacaoPeriodicoVO periodico;
 	
 	public PublicacaoVO(){
