@@ -1,5 +1,8 @@
 package br.java.hromenique.carga.doc;
 
+import com.google.code.morphia.annotations.Embedded;
+
+@Embedded
 public class DadosConferenciaDoc {
 	
 	private String nomeEvento;
