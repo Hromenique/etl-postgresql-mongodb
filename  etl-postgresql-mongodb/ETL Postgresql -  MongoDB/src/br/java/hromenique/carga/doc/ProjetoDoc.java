@@ -12,10 +12,11 @@ public class ProjetoDoc implements Documento {
 	@Id
 	private ObjectId id;
 	private String lattesId;
+	private String titulo;
+	private String descricao;
 	private String periodo;
 	private Integer inicio;
 	private Integer fim;
-	private String titulo;
 	private String situacao;
 	private String natureza;
 	@Embedded
@@ -164,6 +165,14 @@ public class ProjetoDoc implements Documento {
 
 	public void setNumeroDeProducoesCTA(Integer numeroDeProducoesCTA) {
 		this.numeroDeProducoesCTA = numeroDeProducoesCTA;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override

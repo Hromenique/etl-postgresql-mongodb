@@ -9,6 +9,7 @@ import com.google.code.morphia.annotations.Id;
 public class PublicacaoDoc implements Documento {
 	@Id
 	private int id;
+	private List<String> lattesId;
 	private String titulo;
 	private String local;
 	private String paginas;
@@ -34,6 +35,15 @@ public class PublicacaoDoc implements Documento {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public List<String> getLattesId() {
+		return lattesId;
+	}
+
+	public void setLattesId(List<String> lattesId) {
+		this.lattesId = lattesId;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -124,6 +134,8 @@ public class PublicacaoDoc implements Documento {
 				+ ((dadosPeriodico == null) ? 0 : dadosPeriodico.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((idUnico == null) ? 0 : idUnico.hashCode());
+		result = prime * result
+				+ ((lattesId == null) ? 0 : lattesId.hashCode());
 		result = prime * result + ((local == null) ? 0 : local.hashCode());
 		result = prime * result + ((paginas == null) ? 0 : paginas.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
@@ -177,6 +189,11 @@ public class PublicacaoDoc implements Documento {
 			if (other.idUnico != null)
 				return false;
 		} else if (!idUnico.equals(other.idUnico))
+			return false;
+		if (lattesId == null) {
+			if (other.lattesId != null)
+				return false;
+		} else if (!lattesId.equals(other.lattesId))
 			return false;
 		if (local == null) {
 			if (other.local != null)

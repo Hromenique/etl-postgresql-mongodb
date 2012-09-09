@@ -6,6 +6,7 @@ import br.java.hromenique.carga.doc.DadosConferenciaDoc;
 import br.java.hromenique.carga.doc.DadosPeriodicoDoc;
 import br.java.hromenique.carga.doc.PublicacaoDoc;
 import br.java.hromenique.extracao.vo.AutorPublicacaoVO;
+import br.java.hromenique.extracao.vo.CurriculoVO;
 import br.java.hromenique.extracao.vo.PublicacaoVO;
 import br.java.hromenique.utils.ETLUtil;
 
@@ -20,6 +21,15 @@ public class TransformadorPublicacao implements TransformadorInterface<Publicaca
 		PublicacaoDoc documento = new PublicacaoDoc();
 		
 		documento.setId(entidade.getId());
+		
+		//Lista de latesIds
+		List<String> lattesIds = new ArrayList<String>();
+		for(CurriculoVO vo : entidade.getCurriculosAutores()){
+			lattesIds.add(vo.getLattesId());			
+		}
+		documento.setLattesId(lattesIds);
+		
+		
 		documento.setTitulo(entidade.getTitulo());		
 		documento.setLocal(ETLUtil.seIgualTrocar(entidade.getLocal(), "''", null));		
 		documento.setPaginas(entidade.getPaginas());
