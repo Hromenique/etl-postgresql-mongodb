@@ -1,10 +1,7 @@
 package br.java.hromenique.carga.dao;
 
 import java.net.UnknownHostException;
-
-import br.java.hromenique.carga.doc.CurriculoDoc;
 import br.java.hromenique.carga.doc.Documento;
-
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
 import com.mongodb.Mongo;

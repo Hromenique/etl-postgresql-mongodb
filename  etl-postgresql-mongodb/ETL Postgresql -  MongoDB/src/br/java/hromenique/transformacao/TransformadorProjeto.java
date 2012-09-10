@@ -29,10 +29,15 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 		documento.setInicio(entidade.getInicio());
 		documento.setFim(entidade.getFim());
 		documento.setTitulo(entidade.getTitulo());
-		documento.setDescricao(entidade.getDescricao().getDescricao());
+		
+		//Descrição
+		if(entidade.getDescricao() != null){
+			documento.setDescricao(entidade.getDescricao().getDescricao());
+		}
+		
 		documento.setSituacao(entidade.getSituacao());
 		documento.setNatureza(entidade.getNatureza());
-		documento.setAlunosEnvolvidos(gerarAlunosEnvolvidos(entidade.getAlunosEnvolvidos()));
+		documento.setAlunosEnvolvidos(gerarAlunosEnvolvidos(entidade.getAlunosEnvolvidos(), documento.getId()));
 		documento.setNomesIntegrantes(gerarListaNomes(entidade.getIntegrantes()));
 		
 		//LattesId dos Integrantes
@@ -63,7 +68,7 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 			documento.setLattesIdCoordenadores(lattesIdIntegrantes);
 		}
 		
-		documento.setFinanciadores(gerarFinanciadores(entidade.getFinanciadores()));
+		documento.setFinanciadores(gerarFinanciadores(entidade.getFinanciadores(), documento.getId()));
 		documento.setNumeroDeOrientacoes(entidade.getNumeroDeOrientacoes());
 		documento.setNumeroDeProducoesCTA(entidade.getNumeroDeProducoesCTA());
 		
@@ -82,13 +87,13 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 	}
 	
 	
-	private List<AlunosEnvolvidosProjetoDoc> gerarAlunosEnvolvidos(String alunosEnvolvidos){
+	private List<AlunosEnvolvidosProjetoDoc> gerarAlunosEnvolvidos(String alunosEnvolvidos, ObjectId id){
 		
 		if(alunosEnvolvidos == null){
 			return null;
 		}
 		
-		if(alunosEnvolvidos.endsWith("''") || alunosEnvolvidos.equals("")){ 
+		if(alunosEnvolvidos.equals("''") || alunosEnvolvidos.trim().equals("")){ 
 			return null;
 		}		
 		
@@ -97,14 +102,21 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 		//Dividir string em listas de 'tipo (quantidade)'
 		String[] listaStr = alunosEnvolvidos.split("/");
 		
-		for (String aux : listaStr) {			
-			String[] strs = aux.split("\\(");			
-			// Extração da quantidade
-			String quantidade = strs[1].replaceAll("\\)", "").replace(" ", "");
-			// Extração do tipo
-			String tipo = strs[0].trim();
-			alunosEnvolvidosProjeto.add(new AlunosEnvolvidosProjetoDoc(tipo, quantidade));
-		}		
+		for (String aux : listaStr) {	
+			try{
+				String[] strs = aux.split("\\(");			
+				// Extração da quantidade
+				String quantidade = strs[1].replaceAll("\\)", "").replace(" ", "");
+				// Extração do tipo
+				String tipo = strs[0].trim();
+				alunosEnvolvidosProjeto.add(new AlunosEnvolvidosProjetoDoc(tipo, quantidade));
+			}
+			catch(ArrayIndexOutOfBoundsException e){
+				System.out.println("Em Projetos, ID: "+id.toString()+". Em alunosEnvolvidos, ocorreu um erro de sintaxe em: "+aux);	
+				alunosEnvolvidosProjeto.add(new AlunosEnvolvidosProjetoDoc(aux, null));
+			}
+		}
+		
 		return alunosEnvolvidosProjeto;
 	}
 	
@@ -117,7 +129,7 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 	
 	
 	//"Conselho Nacional de Desenvolvimento Científico e Tecnológico - Bolsa / Conselho Nacional de Desenvolvimento Científico e Tecnológico - Auxílio financeiro"
-	public List<FinanciadorDoc> gerarFinanciadores(String strFinanciadores){
+	public List<FinanciadorDoc> gerarFinanciadores(String strFinanciadores, ObjectId id){
 		List<FinanciadorDoc> financiadores = new ArrayList<FinanciadorDoc>();
 		
 		if(strFinanciadores == null){
@@ -130,13 +142,20 @@ public class TransformadorProjeto implements TransformadorInterface<ProjetoPesqu
 		
 		//split para gerar lista de financiadores		
 		for(String aux : strFinanciadores.split("/")){
-			//Extrair nome instituição
-			String nome = aux.split("-")[0].trim();
 			
-			//Extrair tipo do auxílio
-			String auxilio = aux.split("-")[1].trim();
-			
-			financiadores.add(new FinanciadorDoc(nome, auxilio));			
+			try{	
+				//Extrair nome instituição
+				String nome = aux.split("-")[0].trim();
+				
+				//Extrair tipo do auxílio
+				String auxilio = aux.split("-")[1].trim();
+				
+				financiadores.add(new FinanciadorDoc(nome, auxilio));	
+			}			
+			catch (ArrayIndexOutOfBoundsException e) {				
+				System.out.println("Em Projetos, ID: "+id.toString()+". Em financiadores, ocorreu um erro de sintaxe em: "+aux);	
+				financiadores.add(new FinanciadorDoc(aux, null));
+			}			
 		}
 		
 		return financiadores;		

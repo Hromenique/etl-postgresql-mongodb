@@ -34,14 +34,14 @@ public class OrientacaoVO implements Serializable, Tabela{
 	@Id
 	private int id;
 	private String titulo;
-	private int ano;
+	private Integer ano;
 	private String financiador;
 	private String lattesId;
 	private String nome;	
 	private String orientadorNome;
 	private String local;
 	private String nivel;
-	private int tipo;
+	private Integer tipo;
 	private char ehCoorientador;
 	@ManyToOne
 	@JoinColumn(name = "orientadorLattesId")
@@ -67,11 +67,11 @@ public class OrientacaoVO implements Serializable, Tabela{
 		this.titulo = titulo;
 	}
 
-	public int getAno() {
+	public Integer getAno() {
 		return ano;
 	}
 
-	public void setAno(int ano) {
+	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
 
@@ -123,11 +123,11 @@ public class OrientacaoVO implements Serializable, Tabela{
 		this.nivel = nivel;
 	}
 
-	public int getTipo() {
+	public Integer getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 

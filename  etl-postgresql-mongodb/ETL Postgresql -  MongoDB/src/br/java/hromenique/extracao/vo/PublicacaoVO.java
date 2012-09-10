@@ -37,9 +37,9 @@ public class PublicacaoVO implements Serializable, Tabela{
 	private String paginas;
 	private String volume;
 	private String autores;
-	private int ano;
-	private int tipo;
-	private int idUnico;
+	private Integer ano;
+	private Integer tipo;
+	private Integer idUnico;
 	
 	@ManyToMany
 	@JoinTable(name = "lattesPublicacoes", joinColumns=@JoinColumn(name = "publicacaoId"),
@@ -62,11 +62,11 @@ public class PublicacaoVO implements Serializable, Tabela{
 		
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -110,27 +110,27 @@ public class PublicacaoVO implements Serializable, Tabela{
 		this.autores = autores;
 	}
 
-	public int getAno() {
+	public Integer getAno() {
 		return ano;
 	}
 
-	public void setAno(int ano) {
+	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
 
-	public int getTipo() {
+	public Integer getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 
-	public int getIdUnico() {
+	public Integer getIdUnico() {
 		return idUnico;
 	}
 
-	public void setIdUnico(int idUnico) {
+	public void setIdUnico(Integer idUnico) {
 		this.idUnico = idUnico;
 	}
 

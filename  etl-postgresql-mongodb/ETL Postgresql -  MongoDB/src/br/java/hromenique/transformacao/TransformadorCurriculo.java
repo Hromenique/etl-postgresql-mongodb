@@ -2,9 +2,7 @@ package br.java.hromenique.transformacao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.bson.types.ObjectId;
-
 import br.java.hromenique.carga.dao.FormacaoDocDAO;
 import br.java.hromenique.carga.doc.AreaAtuacaoDoc;
 import br.java.hromenique.carga.doc.CurriculoDoc;
@@ -72,7 +70,7 @@ public class TransformadorCurriculo implements TransformadorInterface<CurriculoV
 		//atuacoes
 		if(entidade.getAtuacoes() != null){
 			
-			List<String> atuacoes = new ArrayList();
+			List<String> atuacoes = new ArrayList<String>();
 			for(AtuacaoVO vo : entidade.getAtuacoes()){
 				atuacoes.add(vo.getInstituicao());
 			}
