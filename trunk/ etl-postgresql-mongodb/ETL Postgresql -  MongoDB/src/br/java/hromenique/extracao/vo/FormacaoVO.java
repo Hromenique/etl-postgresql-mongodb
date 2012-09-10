@@ -32,8 +32,8 @@ public class FormacaoVO implements Serializable, Tabela{
 	@Id
 	private String lattesId;	
 	private String periodo;
-	private int inicio;
-	private int fim;
+	private Integer inicio;
+	private Integer fim;
 	private String titulo;
 	private String instituicao;
 	private String orientadorLattesId;
@@ -67,19 +67,19 @@ public class FormacaoVO implements Serializable, Tabela{
 		this.periodo = periodo;
 	}
 
-	public int getInicio() {
+	public Integer getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(int inicio) {
+	public void setInicio(Integer inicio) {
 		this.inicio = inicio;
 	}
 
-	public int getFim() {
+	public Integer getFim() {
 		return fim;
 	}
 
-	public void setFim(int fim) {
+	public void setFim(Integer fim) {
 		this.fim = fim;
 	}
 

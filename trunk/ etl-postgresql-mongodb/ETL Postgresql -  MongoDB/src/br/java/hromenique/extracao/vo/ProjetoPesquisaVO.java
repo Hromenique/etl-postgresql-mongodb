@@ -188,19 +188,19 @@ public class ProjetoPesquisaVO implements Serializable, Tabela{
 		this.financiadores = financiadores;
 	}
 
-	public int getNumeroDeOrientacoes() {
+	public Integer getNumeroDeOrientacoes() {
 		return numeroDeOrientacoes;
 	}
 
-	public void setNumeroDeOrientacoes(int numeroDeOrientacoes) {
+	public void setNumeroDeOrientacoes(Integer numeroDeOrientacoes) {
 		this.numeroDeOrientacoes = numeroDeOrientacoes;
 	}
 
-	public int getNumeroDeProducoesCTA() {
+	public Integer getNumeroDeProducoesCTA() {
 		return numeroDeProducoesCTA;
 	}
 
-	public void setNumeroDeProducoesCTA(int numeroDeProducoesCTA) {
+	public void setNumeroDeProducoesCTA(Integer numeroDeProducoesCTA) {
 		this.numeroDeProducoesCTA = numeroDeProducoesCTA;
 	}
 

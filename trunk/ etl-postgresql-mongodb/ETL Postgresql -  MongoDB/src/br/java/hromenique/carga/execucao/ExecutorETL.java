@@ -2,9 +2,7 @@ package br.java.hromenique.carga.execucao;
 
 import java.net.UnknownHostException;
 import java.util.List;
-
 import com.mongodb.MongoException;
-
 import br.java.hromenique.carga.dao.FormacaoDocDAO;
 import br.java.hromenique.carga.dao.GenericDocumentDAO;
 import br.java.hromenique.carga.doc.CurriculoDoc;
@@ -26,8 +24,13 @@ import br.java.hromenique.transformacao.TransformadorPublicacao;
 
 public class ExecutorETL {
 	
-	public void executa() throws UnknownHostException, MongoException{
-		
+	public static void main(String[]args) throws UnknownHostException, MongoException{
+		ExecutorETL.executa();
+	}
+	
+	
+	public static void executa() throws UnknownHostException, MongoException{
+
 		//Formações
 		GenericDAO<FormacaoVO> daoFormacoesVO = new GenericDAO<FormacaoVO>("curriculo_lattes_2", FormacaoVO.class);
 		FormacaoDocDAO daoFormacaoDoc = new FormacaoDocDAO("curriculo_teste");
@@ -41,6 +44,7 @@ public class ExecutorETL {
 		}
 		
 		daoFormacoesVO.close();
+		System.out.println("----Formações completo-----------------------------------------------------------------");
 		
 		//Currículos
 		GenericDAO<CurriculoVO> daoCurriculosVO = new GenericDAO<CurriculoVO>("curriculo_lattes_2", CurriculoVO.class);
@@ -55,6 +59,7 @@ public class ExecutorETL {
 		}
 		
 		daoCurriculosVO.close();
+		System.out.println("----Currículos completo-----------------------------------------------------------------");
 		
 		//Publicações
 		GenericDAO<PublicacaoVO> daoPublicacaoVO = new GenericDAO<PublicacaoVO>("curriculo_lattes_2", PublicacaoVO.class);
@@ -70,6 +75,7 @@ public class ExecutorETL {
 		
 		daoPublicacaoVO.close();
 		
+		System.out.println("----Publicações completo-----------------------------------------------------------------");
 		//Orientacoes
 		GenericDAO<OrientacaoVO> daoOrientacaoVO = new GenericDAO<OrientacaoVO>("curriculo_lattes_2", OrientacaoVO.class);
 		GenericDocumentDAO<OrientacaoDoc> daoOrientacaoDoc = new GenericDocumentDAO<OrientacaoDoc>("curriculo_teste", OrientacaoDoc.class);
@@ -81,8 +87,10 @@ public class ExecutorETL {
 		for(OrientacaoDoc aux : orientacoesDoc){
 			daoOrientacaoDoc.salvar(aux);
 		}
-		daoCurriculosVO.close();
+		daoOrientacaoVO.close();
+		System.out.println("----Orientações completo-----------------------------------------------------------------");
 		
+
 		//Projetos de Pesquisa
 		GenericDAO<ProjetoPesquisaVO> daoProjetoVO = new GenericDAO<ProjetoPesquisaVO>("curriculo_lattes_2", ProjetoPesquisaVO.class);
 		GenericDocumentDAO<ProjetoDoc> daoProjetoDoc = new GenericDocumentDAO<ProjetoDoc>("curriculo_teste", ProjetoDoc.class);
@@ -95,7 +103,11 @@ public class ExecutorETL {
 			daoProjetoDoc.salvar(aux);
 		}
 		
-		daoProjetoVO.close();		
+		daoProjetoVO.close();	
+		System.out.println("----Projetos completo-----------------------------------------------------------------");
+		
+		
+		System.out.println("----ETL COMPLETO!!!!-----------------------------------------------------------------");
 	}
 
 }

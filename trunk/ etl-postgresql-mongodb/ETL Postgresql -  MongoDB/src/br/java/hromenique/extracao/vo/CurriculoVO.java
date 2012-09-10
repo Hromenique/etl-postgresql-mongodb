@@ -28,7 +28,7 @@ public class CurriculoVO implements Serializable, Tabela{
 	private  String lattesId;
 	private String nome;
 	private String bolsaProdutividade;
-	private int ultimaAtualizacao;
+	private Integer ultimaAtualizacao;
 	private char sexo;
 	@OneToMany
 	@JoinColumn(name = "lattesid")
@@ -78,11 +78,11 @@ public class CurriculoVO implements Serializable, Tabela{
 		this.bolsaProdutividade = bolsaProdutividade;
 	}
 
-	public int getUltimaAtualizacao() {
+	public Integer getUltimaAtualizacao() {
 		return ultimaAtualizacao;
 	}
 
-	public void setUltimaAtualizacao(int ultimaAtualizacao) {
+	public void setUltimaAtualizacao(Integer ultimaAtualizacao) {
 		this.ultimaAtualizacao = ultimaAtualizacao;
 	}
 
