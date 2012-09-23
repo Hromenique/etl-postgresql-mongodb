@@ -2,9 +2,7 @@ package teste.morphia;
 
 import java.net.UnknownHostException;
 import java.util.List;
-
 import com.mongodb.MongoException;
-
 import br.java.hromenique.carga.dao.GenericDocumentDAO;
 import br.java.hromenique.carga.doc.ProjetoDoc;
 import br.java.hromenique.extracao.dao.GenericDAO;
@@ -18,8 +16,8 @@ public class TesteProjeto {
 		GenericDocumentDAO<ProjetoDoc> daoDoc = new GenericDocumentDAO<ProjetoDoc>("curriculo_teste", ProjetoDoc.class);
 		GenericDAO<ProjetoPesquisaVO> daoVO = new GenericDAO<ProjetoPesquisaVO>("curriculo_lattes_2", ProjetoPesquisaVO.class);		
 		TransformadorProjeto transformador = new TransformadorProjeto();
-		
-		ContadorIdPK pk = new ContadorIdPK(7, "0013459450420724");
+		//1;"0683040763784547"
+		ContadorIdPK pk = new ContadorIdPK(1, "0683040763784547");
 		ContadorIdPK[] listaPK = {new ContadorIdPK(8, "0013459450420724"), new ContadorIdPK(10, "1303396760085915")};
 		
 		ProjetoPesquisaVO projetoPesquisaVO = daoVO.buscar(pk);

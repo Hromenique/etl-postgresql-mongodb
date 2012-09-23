@@ -19,14 +19,12 @@ public class ProjetoDoc implements Documento {
 	private Integer fim;
 	private String situacao;
 	private String natureza;
-	@Embedded
-	private List<AlunosEnvolvidosProjetoDoc> alunosEnvolvidos;
+	private List<String> alunosEnvolvidos;
 	private List<String> nomesIntegrantes;
 	private List<String> lattesIdIntegrantes;
 	private List<String> nomeCoordenadores;
 	private List<String> lattesIdCoordenadores;
-	@Embedded
-	private List<FinanciadorDoc> financiadores;
+	private List<String> financiadores;
 	private Integer numeroDeOrientacoes;
 	private Integer numeroDeProducoesCTA;		
 	
@@ -102,12 +100,12 @@ public class ProjetoDoc implements Documento {
 		this.natureza = natureza;
 	}
 
-	public List<AlunosEnvolvidosProjetoDoc> getAlunosEnvolvidos() {
+	public List<String> getAlunosEnvolvidos() {
 		return alunosEnvolvidos;
 	}
 
 	public void setAlunosEnvolvidos(
-			List<AlunosEnvolvidosProjetoDoc> alunosEnvolvidos) {
+			List<String> alunosEnvolvidos) {
 		this.alunosEnvolvidos = alunosEnvolvidos;
 	}
 
@@ -151,11 +149,11 @@ public class ProjetoDoc implements Documento {
 		this.numeroDeOrientacoes = numeroDeOrientacoes;
 	}
 
-	public List<FinanciadorDoc> getFinanciadores() {
+	public List<String> getFinanciadores() {
 		return financiadores;
 	}
 
-	public void setFinanciadores(List<FinanciadorDoc> financiadores) {
+	public void setFinanciadores(List<String> financiadores) {
 		this.financiadores = financiadores;
 	}
 
